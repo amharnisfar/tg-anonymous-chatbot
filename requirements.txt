@@ -3,3 +3,4 @@ python-telegram-bot
 python-dotenv
 flask
 google-generativeai
+asyncio
