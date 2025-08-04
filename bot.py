@@ -15,13 +15,13 @@ from telegram.ext import (
 import google.generativeai as genai
 
 # --- Configuration ---
-BOT_TOKEN = "8251430379:AAGghwHur_RvFpEuq--KSpoYK3WVydkvXy8"  # Replace with your actual bot token
-ADMIN_ID = 7947910185  # Replace with your actual admin ID
-BOT_OWNER_CONTACT = "@nataliapersonal_bot"  # Your contact username
-HEALTH_CHECK_PORT = 28142
+BOT_TOKEN = "<BOT_TOKEN_HERE>"  # Replace with your actual bot token
+ADMIN_ID = <ADMIN_ID_HERE>  # Replace with your actual admin ID
+BOT_OWNER_CONTACT = "<BOT_ADMIN_ID_OR_ADMIN_BOT>"  # Your contact username
+HEALTH_CHECK_PORT = <ADD_PORT_HERE>
 
 # --- Google AI Configuration ---
-GOOGLE_AI_API_KEY = "AIzaSyBeaapvBN0OjOoJxUjpHTKvPM7JUhvYZro"  # Replace with your actual key
+GOOGLE_AI_API_KEY = "<API_KEY_HERE>"  # Replace with your actual key
 genai.configure(api_key=GOOGLE_AI_API_KEY)
 
 # --- User Status Enum (assuming UserStatus.py exists) ---
@@ -42,7 +42,7 @@ app = Flask(__name__)
 
 @app.route("/check")
 def health_check():
-    return "Natalia Bot is running!"
+    return "Bot is running!"
 
 def run_flask_app():
     app.run(host="0.0.0.0", port=HEALTH_CHECK_PORT)
