@@ -37,7 +37,6 @@
 <hr>
 <h2>🚀 Deployment</h2>
 <p>You can run this bot either inside a Docker container (recommended for production) or directly on your local machine for development and testing.</p>
-
 <h3><strong>🐳 How to Run Using Docker (Production)</strong></h3>
 <p>Docker is the recommended way to run this bot in production for consistency and ease of management.</p>
 <h4><strong>1. Build the Docker Image</strong></h4>
@@ -54,7 +53,6 @@
   telegram-chat-bot
 </code></pre>
 <p>Your bot is now running in the background!</p>
-
 <h3><strong>💻 How to Run Locally (for Development)</strong></h3>
 <p>Follow these steps to run the bot on your own machine. This is ideal for testing and development.</p>
 <h4><strong>1. Create a Virtual Environment</strong></h4>
@@ -147,6 +145,15 @@ set HEALTH_CHECK_PORT="8080"
 <tr>
 <td><code>/exit_aichat</code></td>
 <td>Ends your conversation with the AI.</td>
+</tr>
+<tr>
+<td rowspan="2" style="background-color: #fffbe6;"><strong>Admin</strong></td>
+<td style="background-color: #fffbe6;"><code>/stats</code></td>
+<td style="background-color: #fffbe6;">(Admin Only) Displays bot usage statistics like total and active users.</td>
+</tr>
+<tr>
+<td style="background-color: #fffbe6;"><code>/change_api_key <key></code></td>
+<td style="background-color: #fffbe6;">(Admin Only) Updates the Google AI API key on the fly.</td>
 </tr>
 </tbody>
 </table>
