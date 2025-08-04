@@ -4,3 +4,4 @@ python-dotenv
 flask
 google-generativeai
 asyncio
+thread
