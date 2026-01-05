@@ -1,5 +1,3 @@
-
-Of course! Here is the enhanced README file that includes the new information about run.py, detailed Docker deployment instructions, and a "Deploy with Diploi.com" button.
 <!DOCTYPE html>
 <html>
 <body style="font-family: sans-serif;">
