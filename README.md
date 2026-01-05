@@ -10,7 +10,7 @@
 <br>
 <p><b>Host on Dipoi.com for Free - 14 days free trial (👇Click on the icon below👇)</b></p>
 <a href="https://diploi.com/" target="_blank">
-<img src="https://docs.diploi.com/_astro/logo-text.BLyLf__3.svg" alt="Deploy with Diploi" style="height: 40px;">
+<center><img src="https://docs.diploi.com/_astro/logo-text.BLyLf__3.svg" alt="Deploy with Diploi" style="height: 40px;"></center>
 </a>
 </div>
 <hr>
