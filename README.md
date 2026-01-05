@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body style="font-family: sans-serif;">
-<h1>Advanced Telegram Anonymous ChatBot Including AI - By Amhar Nisfer</h1>
+<h1>Advanced Telegram Anonymous ChatBot Including AI (Version 1.0.1) - By Amhar Nisfer</h1>
 <p>This is a sophisticated Telegram bot that connects users for anonymous chats and features a direct line to an advanced, tool-wielding AI assistant named Lisa. It includes a full user onboarding process, gender-based pairing, robust admin commands, and a powerful hybrid AI architecture designed for rich, interactive conversations.</p>
 <div>
 <a href="https://t.me/aharchatbot" target="_blank" style="display: inline-block; background-color: #0088cc; color: #ffffff; padding: 12px 20px; margin: 10px 0; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; font-weight: bold;">Message Bot on Telegram</a>
