@@ -1,9 +1,18 @@
+
+Of course! Here is the enhanced README file that includes the new information about run.py, detailed Docker deployment instructions, and a "Deploy with Diploi.com" button.
 <!DOCTYPE html>
 <html>
 <body style="font-family: sans-serif;">
 <h1>Advanced Telegram Anonymous ChatBot Including AI - By Amhar Nisfer</h1>
 <p>This is a sophisticated Telegram bot that connects users for anonymous chats and features a direct line to an advanced, tool-wielding AI assistant named Lisa. It includes a full user onboarding process, gender-based pairing, robust admin commands, and a powerful hybrid AI architecture designed for rich, interactive conversations.</p>
+<div>
 <a href="https://t.me/aharchatbot" target="_blank" style="display: inline-block; background-color: #0088cc; color: #ffffff; padding: 12px 20px; margin: 10px 0; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; font-weight: bold;">Message Bot on Telegram</a>
+</div>
+<div>
+<a href="https://app.diploi.com/deploy?repository=https://github.com/YOUR_USERNAME/YOUR_REPO_NAME" target="_blank">
+<img src="https://diploi.com/button.svg" alt="Deploy with Diploi" style="height: 40px;">
+</a>
+</div>
 <hr>
 <h2>✨ Features</h2>
 <ul>
@@ -22,6 +31,7 @@
 <li><strong>🔐 Privacy Focused:</strong> Forwards messages without revealing user identities and protects content from being forwarded or saved.</li>
 <li><strong>👑 Admin Panel:</strong> Special commands for the bot admin to view usage statistics and broadcast messages to all users.</li>
 <li><strong>🚀 Robust & Asynchronous:</strong> Built with <code>asyncio</code> to handle many conversations concurrently without blocking.</li>
+<li><strong>❤️ Health Check:</strong> Includes a <code>run.py</code> with a web server to provide a health check endpoint, perfect for modern hosting platforms like Diploi, Render, or Heroku.</li>
 </ul>
 <hr>
 <h2>🛠️ Project Structure</h2>
@@ -29,48 +39,62 @@
 <pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">/your-project
 ├── memory/
 ├── voice_notes/
+├── Dockerfile
+├── requirements.txt
 ├── bot.py
+├── run.py
 ├── db_connection.py
 └── UserStatus.py
 </code></pre>
 <ul>
 <li><code>bot.py</code>: The main application logic, containing all handlers and the bot's core functionality.</li>
+<li><code>run.py</code>: The entry point for production deployment. It starts a simple web server (e.g., Flask) to respond to health checks and then runs the main bot process from <code>bot.py</code>.</li>
 <li><code>db_connection.py</code>: Manages all interactions with the SQLite database for user profiles and chat pairing.</li>
 <li><code>UserStatus.py</code>: Contains the <code>Enum</code> for managing user states (e.g., IDLE, IN_SEARCH, COUPLED).</li>
-<li><code>memory/</code>: A directory where the AI stores JSON files to remember facts about each user.</li>
-<li><code>voice_notes/</code>: A temporary directory for processing incoming voice and image files.</li>
+<li><code>Dockerfile</code>: Instructions to build the container image for easy deployment.</li>
+<li><code>requirements.txt</code>: Lists all the Python packages required to run the bot.</li>
+<li><code>memory/</code> & <code>voice_notes/</code>: Directories for storing user memory and temporary media files.</li>
 </ul>
 <hr>
 <h2>🚀 Deployment</h2>
-<p>You can run this bot either inside a Docker container (recommended for production) or directly on your local machine for development and testing. The following instructions are for local development.</p>
+<p>You can run this bot either inside a Docker container (recommended for production) or directly on your local machine for development and testing.</p>
+<h3><strong>🐳 How to Run Using Docker (Production)</strong></h3>
+<p>Docker is the recommended way to run this bot in production for consistency and ease of management. Platforms like Diploi can build and run the container for you automatically.</p>
+<h4><strong>1. Build the Docker Image</strong></h4>
+<p>From the root directory of the project, run the following command:</p>
+<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">docker build -t telegram-chat-bot .</code></pre>
+<h4><strong>2. Run the Docker Container</strong></h4>
+<p>Run the container by providing your credentials as environment variables. This is the most secure method.</p>
+<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">docker run -d --name my-chat-bot \
+-e BOT_TOKEN="YOUR_TELEGRAM_BOT_TOKEN" \
+-e ADMIN_ID="YOUR_TELEGRAM_ADMIN_ID" \
+-e BOT_OWNER_CONTACT="@YourSupportUsername" \
+-e OLLAMA_API_KEY="YOUR_OLLAMA_API_KEY" \
+-e GROQ_API_KEY="YOUR_GROQ_API_KEY" \
+-e GOOGLE_API_KEY="YOUR_GOOGLE_CLOUD_API_KEY" \
+-e GOOGLE_CSE_ID="YOUR_GOOGLE_CSE_ID" \
+-p 8000:8000 \
+telegram-chat-bot
+</code></pre>
+<p>Your bot is now running in the background, and the health check server is accessible on port 8000!</p>
 <h3><strong>💻 How to Run Locally (for Development)</strong></h3>
 <p>Follow these steps to run the bot on your own machine. This is ideal for testing and development.</p>
 <h4><strong>1. Create a Virtual Environment</strong></h4>
-<p>It's a best practice to isolate your project's dependencies. From the project's root directory:</p>
+<p>It's a best practice to isolate your project's dependencies:</p>
 <pre><code style="background-color: #f1f1f1; display: block; padding: 10px;"># Create the virtual environment
 python3 -m venv venv
 Activate it (on MacOS/Linux)
 source venv/bin/activate
-Or activate it (on Windows)
-.\venv\Scripts\activate
 </code></pre>
 <h4><strong>2. Install Dependencies</strong></h4>
-<p>Install all the required Python libraries. You will need to create a <code>requirements.txt</code> file containing packages like <code>python-telegram-bot</code>, <code>httpx</code>, <code>google-api-python-client</code>, and <code>groq</code>.</p>
-<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">pip install python-telegram-bot httpx "google-api-python-client" groq
+<p>Install all the required Python libraries from the <code>requirements.txt</code> file. Ensure it includes a web server like Flask.</p>
+<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">pip install -r requirements.txt
 </code></pre>
-<h4><strong>3. Set Environment Variables or Configure the Script</strong></h4>
-<p>Before running, you must replace the placeholder values inside the <code>bot.py</code> script with your actual API keys and tokens:</p>
-<ul>
-<li><code>BOT_TOKEN</code>: Your Telegram bot token from BotFather.</li>
-<li><code>ADMIN_ID</code>: Your personal Telegram user ID.</li>
-<li><code>OLLAMA_API_KEY</code>: Your API key for the Ollama service.</li>
-<li><code>GROQ_API_KEY</code>: Your API key from GroqCloud.</li>
-<li><code>GOOGLE_API_KEY</code>: Your Google Cloud Platform API key.</li>
-<li><code>GOOGLE_CSE_ID</code>: Your Google Programmable Search Engine ID.</li>
-</ul>
+<h4><strong>3. Configure Credentials</strong></h4>
+<p>Before running, you must replace the placeholder values inside the <code>bot.py</code> script with your actual API keys and tokens.</p>
 <h4><strong>4. Run the Bot</strong></h4>
-<p>With your virtual environment active and credentials configured, start the bot:</p>
-<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">python bot.py
+<p>With your virtual environment active and credentials set, use <code>run.py</code> to start both the web server and the bot:</p>
+<pre><code style="background-color: #f1f1f1; display: block; padding: 10px;">python run.py
 </code></pre>
 <p>The bot is now running and connected to Telegram. To stop it, press <code>CTRL+C</code> in the terminal.</p>
 <hr>
