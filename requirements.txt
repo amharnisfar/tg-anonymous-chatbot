@@ -5,3 +5,6 @@ flask
 google-generativeai
 asyncio
 thread
+groq
+ollama
+httpx
