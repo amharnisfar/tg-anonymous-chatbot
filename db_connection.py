@@ -170,3 +170,32 @@ def reset_users_status():
     c.execute("UPDATE users SET status = ?, partner_id = NULL", (UserStatus.IDLE.value,))
     conn.commit()
     conn.close()
+
+# --- NEW FUNCTIONS ADDED BELOW ---
+
+def get_user_profile(user_id: int) -> dict or None:
+    """Retrieves a user's full profile from the database for the /my_profile command."""
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT name, gender, age, location FROM users WHERE user_id = ?", (user_id,))
+    profile = c.fetchone()
+    conn.close()
+    if profile:
+        return {
+            "name": profile[0],
+            "gender": profile[1],
+            "age": profile[2],
+            "location": profile[3],
+        }
+    return None
+
+def get_all_user_ids() -> list:
+    """Retrieves a list of all user IDs from the database for broadcast commands."""
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    c.execute("SELECT user_id FROM users")
+    # The result of fetchall is a list of tuples, e.g., [(123,), (456,)]
+    # We extract the first element from each tuple to get a simple list of IDs.
+    user_ids = [item[0] for item in c.fetchall()]
+    conn.close()
+    return user_ids
