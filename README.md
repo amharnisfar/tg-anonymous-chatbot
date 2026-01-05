@@ -7,8 +7,8 @@
 <a href="https://t.me/aharchatbot" target="_blank" style="display: inline-block; background-color: #0088cc; color: #ffffff; padding: 12px 20px; margin: 10px 0; text-align: center; text-decoration: none; font-size: 16px; border-radius: 5px; font-weight: bold;">Message Bot on Telegram</a>
 </div>
 <div>
-<a href="https://app.diploi.com/deploy?repository=https://github.com/YOUR_USERNAME/YOUR_REPO_NAME" target="_blank">
-<img src="https://diploi.com/button.svg" alt="Deploy with Diploi" style="height: 40px;">
+<a href="https://app.diploi.com/deploy?repository=https://github.com/amharnisfartg-anonymous-chatbot" target="_blank">
+<img src="https://docs.diploi.com/_astro/logo-text.BLyLf__3.svg" alt="Deploy with Diploi" style="height: 40px;">
 </a>
 </div>
 <hr>
